@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research · Avyukt Raghuvanshi</title>
+<meta name="description" content="Machine learning for gravitational wave classification with LIGO, physics informed energy reconstruction for DUNE and NOvA, and cryogenic neuromorphic circuit work.">
+<meta name="theme-color" content="#1e1e2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e1e2e'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='none' stroke='%23cba6f7' stroke-width='2'/%3E%3Cpath d='M16 3v6M16 23v6M3 16h6M23 16h6' stroke='%23cba6f7' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-mark" href="index.html">Avyukt Raghuvanshi <span>/ EE + Physics</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="work.html">Work</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="phead">
+  <div class="wrap">
+    <p class="mono eyebrow is-research">Physics</p>
+    <h1>Finding real signals inside detector noise.</h1>
+    <p class="lede">
+      Machine learning on data where the interesting events are rare, the classes are
+      badly imbalanced, and a confident wrong answer is worse than no answer at all.
+    </p>
+
+    <div class="chirp-band rise">
+      <div class="chirp-wrap">
+        <canvas id="chirp-canvas" aria-label="A gravitational wave chirp being recovered from a noisy strain trace"></canvas>
+        <p class="chirp-label">Strain · inspiral to ringdown</p>
+        <div class="chirp-key">
+          <span><i style="background:var(--s1)"></i>raw</span>
+          <span><i style="background:var(--teal)"></i>recovered</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="section tight">
+  <div class="wrap">
+    <div class="log">
+      <article class="entry rise">
+        <div class="entry-when"><span>Since Jan 2024</span>LIGO Scientific Collaboration</div>
+        <div>
+          <h3>Machine learning for signal classification</h3>
+          <p class="entry-who">Prof. Michael Coughlin · University of Minnesota</p>
+          <p class="entry-body">
+            Built a low latency classifier that separates true astrophysical signals from
+            detector noise on heavily class imbalanced data, published in PASP. Now developing
+            an evidential deep learning framework for anomaly and out of distribution detection
+            that splits predictive uncertainty into aleatoric and epistemic parts, using
+            Dirichlet entropy and mutual information to flag rare events rather than forcing
+            every candidate into a known class.
+          </p>
+          <div class="metrics">
+            <div><strong>0.94</strong><span>AUC</span></div>
+            <div><strong>88%</strong><span>accuracy</span></div>
+            <div><strong>PASP</strong><span>peer reviewed</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry rise">
+        <div class="entry-when"><span>Since May 2025</span>DUNE and NOvA</div>
+        <div>
+          <h3>Physics informed machine learning</h3>
+          <p class="entry-who">DUNE and NOvA Collaborations</p>
+          <p class="entry-body">
+            Co-developed a composite loss framework that enforces kinematic constraints inside
+            a regression estimator for neutrino energy reconstruction, so the model cannot buy
+            accuracy by quietly violating the physics it is supposed to be measuring.
+            Contributing author, paper in preparation.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry rise">
+        <div class="entry-when"><span>Since Jan 2026</span>Neuromorphic computing</div>
+        <div>
+          <h3>Cryogenic Josephson junction circuits</h3>
+          <p class="entry-who">Prof. Vlad Pribiag · University of Minnesota</p>
+          <p class="entry-body">
+            Simulating physics based neuromorphic four tunnel Josephson junction circuits in
+            PyTorch, and running the measurement side of the same question: a dilution
+            refrigerator at millikelvin base temperature, automated through QCoDeS with a
+            Lakeshore 372.
+          </p>
+        </div>
+      </article>
+
+      <article class="entry rise">
+        <div class="entry-when"><span>Ongoing</span>Transient classification</div>
+        <div>
+          <h3>Anomaly detection for astronomical transients</h3>
+          <p class="entry-who">First author paper in preparation, ApJ</p>
+          <p class="entry-body">
+            Tracking how a model's belief in a classification moves over the lifetime of a
+            transient, rather than scoring one snapshot. Temporal belief trajectories in an
+            evidential setting give a handle on which objects are genuinely unusual instead of
+            merely early or faint.
+          </p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head rise">
+      <p class="mono eyebrow is-research">Papers and honors</p>
+      <h2>Written up.</h2>
+    </div>
+    <ul class="pubs rise">
+      <li>
+        <span class="venue">PASP</span>
+        <span class="title">Astrophysical or Terrestrial: ML Classification of GW Candidates</span>
+        <span class="role">Published</span>
+      </li>
+      <li>
+        <span class="venue">ApJ</span>
+        <span class="title">Anomaly Detection of Astronomical Transients via Temporal Belief Trajectories in Evidential Deep Learning</span>
+        <span class="role">First author, in prep</span>
+      </li>
+      <li>
+        <span class="venue">AppleCiDEr II</span>
+        <span class="title">SpectraNet</span>
+        <span class="role">Contributing author</span>
+      </li>
+      <li>
+        <span class="venue">In prep</span>
+        <span class="title">Can Self-Consistent Kinematic Constraints Be Enforced within Neutrino Energy Estimators?</span>
+        <span class="role">Contributing author</span>
+      </li>
+      <li>
+        <span class="venue">Honors</span>
+        <span class="title">NSF MPS-High grant recipient · LIGO Scientific Collaboration member · UMN CSE Dean's List · GPA 3.8</span>
+        <span class="role">2024 to now</span>
+      </li>
+    </ul>
+
+    <div class="hero-actions rise" style="margin-top:30px">
+      <a class="btn" href="about.html">About and toolbox</a>
+      <a class="btn" href="contact.html">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="mono" style="color:var(--dim);margin-bottom:10px">Reach me</p>
+        <a class="foot-mail" href="mailto:avyuktraghuvanshi00@gmail.com">avyuktraghuvanshi00@gmail.com</a>
+      </div>
+      <div class="foot-nav">
+        <a href="index.html">Home</a>
+        <a href="work.html">Work</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/raghuavy" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/raghuavy" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>Avyukt Raghuvanshi · B.S. EE (Honors) and Physics, expected May 2028</span>
+      <span>Palette is Catppuccin Mocha.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/site.js"></script>
+<script src="assets/chirp.js"></script>
+</body>
+</html>

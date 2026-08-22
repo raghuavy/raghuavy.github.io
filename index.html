@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Avyukt Raghuvanshi · RTL to silicon</title>
+<meta name="description" content="Avyukt Raghuvanshi. Electrical Engineering (Honors) and Physics at the University of Minnesota. Digital design, RTL to GDSII, tapeout, and machine learning for gravitational wave and neutrino data.">
+<meta name="theme-color" content="#1e1e2e">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e1e2e'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='none' stroke='%23cba6f7' stroke-width='2'/%3E%3Cpath d='M16 3v6M16 23v6M3 16h6M23 16h6' stroke='%23cba6f7' stroke-width='2'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-mark" href="index.html">Avyukt Raghuvanshi <span>/ EE + Physics</span></a>
+    <div class="nav-links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="work.html">Work</a>
+      <a href="research.html">Research</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="mono eyebrow">Minneapolis, MN · University of Minnesota</p>
+        <h1>I take RTL all the way to <em>silicon</em>.</h1>
+        <p class="lede">
+          Electrical Engineering (Honors) and Physics undergraduate. I write SystemVerilog,
+          harden it through open source and commercial flows, and send it to a shuttle.
+          The other half of my week goes to machine learning on gravitational wave and
+          neutrino data with the LIGO, DUNE, and NOvA collaborations.
+        </p>
+        <div class="hero-actions">
+          <a class="btn is-primary" href="work.html">See the work</a>
+          <a class="btn" href="research.html">Research</a>
+          <a class="btn" href="contact.html">Get in touch</a>
+        </div>
+
+        <div class="sheet">
+          <div><b>On screen</b><i>2×2 systolic array</i></div>
+          <div><b>Process</b><i>SkyWater 130 nm</i></div>
+          <div><b>Die</b><i>388 × 378 µm</i></div>
+          <div><b>Closed at</b><i>50 MHz</i></div>
+        </div>
+      </div>
+
+      <div class="stage">
+        <canvas id="die-canvas" aria-label="Interactive model of a hardened silicon die"></canvas>
+        <ul class="stack" id="stack">
+          <li><i></i>diff</li>
+          <li><i></i>poly</li>
+          <li><i></i>met1</li>
+          <li><i></i>met2</li>
+          <li><i></i>met3</li>
+          <li><i></i>met4</li>
+          <li><i></i>met5</li>
+        </ul>
+        <p class="drag-hint">Drag to orbit</p>
+        <div class="fallback" id="fallback">
+          <p class="mono">3D view needs WebGL.<br>The work is all through the nav.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="flow">
+  <div class="wrap">
+    <div class="flow-track" id="flow" role="group" aria-label="RTL to GDSII flow"></div>
+    <p class="flow-note" id="flow-note"></p>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head rise">
+      <p class="mono eyebrow">Three things I spend time on</p>
+      <h2>Chips, signals, and the people learning both.</h2>
+    </div>
+
+    <div class="hub">
+      <a class="hub-card c-silicon rise" href="work.html">
+        <p class="hub-tag">Silicon</p>
+        <h3>Digital and physical design</h3>
+        <p class="hub-copy">
+          RTL in SystemVerilog, hardened through OpenLane and through Synopsys and Cadence,
+          plus the mixed signal boards that carry it.
+        </p>
+        <div class="hub-stat">
+          <span><i>1</i> die hardened</span>
+          <span><i>2</i> tapeouts in flight</span>
+          <span><i>6</i> projects</span>
+        </div>
+        <p class="hub-go">See the work</p>
+      </a>
+
+      <a class="hub-card c-research rise" href="research.html">
+        <p class="hub-tag">Physics</p>
+        <h3>Signals inside detector noise</h3>
+        <p class="hub-copy">
+          Low latency classification, uncertainty that knows what it does not know,
+          and losses that will not let a model break the physics.
+        </p>
+        <div class="hub-stat">
+          <span><i>3</i> collaborations</span>
+          <span><i>1</i> published</span>
+          <span><i>3</i> in prep</span>
+        </div>
+        <p class="hub-go">Read the research</p>
+      </a>
+
+      <a class="hub-card c-people rise" href="about.html">
+        <p class="hub-tag">People</p>
+        <h3>Getting undergrads to the fab</h3>
+        <p class="hub-copy">
+          Founded Stone Arch Silicon, and helped stand up a network of university
+          groups that now tape out together.
+        </p>
+        <div class="hub-stat">
+          <span><i>$20k</i> secured</span>
+          <span><i>4+</i> universities</span>
+          <span><i>2</i> courses taught</span>
+        </div>
+        <p class="hub-go">More about me</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head rise">
+      <p class="mono eyebrow is-silicon">Most recent silicon</p>
+      <h2>The die on the home page is real.</h2>
+      <p class="lede">
+        It is a 2×2 systolic array I designed and hardened end to end. Every number in the
+        strip below came off the run, not off a datasheet.
+      </p>
+    </div>
+
+    <div class="cards">
+      <a class="card rise is-wide" href="https://github.com/raghuavy/2x2_systolic_array_matrix_mult" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">Full RTL to GDSII</span>
+          <span class="card-date">2026</span>
+        </div>
+        <h3>2×2 systolic array matrix multiplier</h3>
+        <p class="card-meta">SystemVerilog · OpenLane · Yosys · OpenROAD · Magic · KLayout</p>
+        <ul>
+          <li>Output stationary array of four processing elements, each a MAC with a local accumulator, operands rippling one hop per cycle. Verified with a skewed input testbench.</li>
+          <li>Hardened through synthesis, floorplan, placement, clock tree, routing, then Magic and KLayout signoff.</li>
+        </ul>
+        <div class="specs">
+          <div><b>Process</b><i>SKY130</i></div>
+          <div><b>Die</b><i>388 × 378 µm</i></div>
+          <div><b>Fmax</b><i>50 MHz</i></div>
+          <div><b>Setup / hold</b><i class="ok">no violations</i></div>
+          <div><b>DRC</b><i class="ok">clean</i></div>
+          <div><b>XOR check</b><i class="ok">verified</i></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hero-actions rise" style="margin-top:26px">
+      <a class="btn" href="work.html">All six projects</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="mono" style="color:var(--dim);margin-bottom:10px">Reach me</p>
+        <a class="foot-mail" href="mailto:avyuktraghuvanshi00@gmail.com">avyuktraghuvanshi00@gmail.com</a>
+      </div>
+      <div class="foot-nav">
+        <a href="work.html">Work</a>
+        <a href="research.html">Research</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://github.com/raghuavy" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/raghuavy" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      <span>Avyukt Raghuvanshi · B.S. EE (Honors) and Physics, expected May 2028</span>
+      <span>Built with three.js. Palette is Catppuccin Mocha.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="assets/site.js"></script>
+<script src="assets/die.js"></script>
+</body>
+</html>
