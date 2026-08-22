@@ -42,149 +42,16 @@
   </div>
 </header>
 
-<section class="section tight">
-  <div class="wrap">
-    <div class="section-head rise">
-      <p class="mono eyebrow is-silicon">Chips</p>
-      <h2>RTL, and what happens after it.</h2>
+  <div id="md-content" data-page="work"></div>
+
+  <section class="section tight">
+    <div class="wrap">
+      <div class="hero-actions rise">
+        <a class="btn" href="research.html">Research next</a>
+        <a class="btn" href="contact.html">Ask me about any of this</a>
+      </div>
     </div>
-
-    <div class="cards">
-      <a class="card rise is-wide" href="https://github.com/raghuavy/2x2_systolic_array_matrix_mult" target="_blank" rel="noopener">
-        <div class="card-top">
-          <span class="card-tag">Full RTL to GDSII</span>
-          <span class="card-date">2026</span>
-        </div>
-        <h3>2×2 systolic array matrix multiplier</h3>
-        <p class="card-meta">SystemVerilog · OpenLane · Yosys · OpenROAD · Magic · KLayout</p>
-        <ul>
-          <li>Output stationary 2×2 array in SystemVerilog: four processing elements, each a MAC with a local accumulator, operands rippling one hop per cycle. Verified with a skewed input testbench.</li>
-          <li>Hardened through the full flow on SKY130, from Yosys synthesis through OpenROAD floorplan, placement, clock tree, and routing, then Magic and KLayout signoff.</li>
-          <li>Also exploring RTL and HLS for sparse by sparse matrix multiplication aimed at AI and HPC workloads.</li>
-        </ul>
-        <div class="specs">
-          <div><b>Process</b><i>SKY130</i></div>
-          <div><b>Die</b><i>388 × 378 µm</i></div>
-          <div><b>Fmax</b><i>50 MHz</i></div>
-          <div><b>Setup / hold</b><i class="ok">no violations</i></div>
-          <div><b>DRC</b><i class="ok">clean</i></div>
-          <div><b>XOR check</b><i class="ok">verified</i></div>
-        </div>
-      </a>
-
-      <article class="card rise">
-        <div class="card-top">
-          <span class="card-tag">Tapeout, in flight</span>
-          <span class="card-date">Since 2026</span>
-        </div>
-        <h3>Multi university SKY130 SoC tapeout</h3>
-        <p class="card-meta">ASIC Network · joint with UC Berkeley</p>
-        <ul>
-          <li>Organizing a shared SoC tapeout that uses Chipyard as a common chassis, so schools contribute digital, analog, and accelerator IP into one system instead of separate tiles.</li>
-          <li>Set the integration model: SystemVerilog IP drops in as black boxes so Chisel is not a prerequisite, on one baseline fully open source flow every school can run, with Cadence and Synopsys as optional per school extensions.</li>
-          <li>Leading cross institution scoping and early block interface definition so contributed IP still integrates during integration week.</li>
-        </ul>
-        <div class="specs">
-          <div><b>Target</b><i>December shuttle</i></div>
-          <div><b>Chassis</b><i>Chipyard</i></div>
-          <div><b>Process</b><i>SKY130</i></div>
-        </div>
-      </article>
-
-      <article class="card rise">
-        <div class="card-top">
-          <span class="card-tag">UROP funded</span>
-          <span class="card-date">Fall 2026</span>
-        </div>
-        <h3>8 bit posit codec for an open source arithmetic unit</h3>
-        <p class="card-meta">Prof. Yu (Kevin) Cao · three person unit, I own the codec</p>
-        <ul>
-          <li>posit8 with es = 2: a decoder and a round to nearest even encoder in SystemVerilog, plus the shared unpacked interface the multiplier and adder or quire datapaths consume.</li>
-          <li>Reusable cocotb and Verilator harness for exhaustive checking against SoftPosit, all 256 codes plus decode and encode round trip identity, scaling to the 65,536 pair check for the full unit.</li>
-          <li>Hardening the codec standalone through OpenLane on SKY130 for area, critical path delay, and maximum frequency characterization.</li>
-        </ul>
-        <div class="specs">
-          <div><b>Codes checked</b><i>256 of 256</i></div>
-          <div><b>Reference</b><i>SoftPosit</i></div>
-          <div><b>Tapeout</b><i>TSMC 180 nm, with UCLA</i></div>
-        </div>
-      </article>
-
-      <article class="card rise is-wide">
-        <div class="card-top">
-          <span class="card-tag">Cores and flow</span>
-          <span class="card-date">Since 2026</span>
-        </div>
-        <h3>Pipelined RISC-V processors and an RTL to GDS flow</h3>
-        <p class="card-meta">Stone Arch Silicon · faculty advisor Prof. Yu (Kevin) Cao</p>
-        <ul>
-          <li>RV32I and RV64I five stage pipelines in Verilog and SystemVerilog, taken through Synopsys Design Compiler and Cadence Innovus.</li>
-          <li>Building the club flow that student teams reuse, so a new member can go from a synthesizable module to a placed and routed block without assembling a toolchain first.</li>
-          <li>Student led tapeout collaboration with the Berkeley Tapeout Decal, Cornell C2S2, and Georgia Tech Silicon Jackets.</li>
-        </ul>
-        <div class="specs">
-          <div><b>ISA</b><i>RV32I / RV64I</i></div>
-          <div><b>Depth</b><i>5 stage</i></div>
-          <div><b>Flow</b><i>DC + Innovus</i></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section alt">
-  <div class="wrap">
-    <div class="section-head rise">
-      <p class="mono eyebrow is-silicon">Boards</p>
-      <h2>Mixed signal hardware that has to survive the real world.</h2>
-    </div>
-
-    <div class="cards">
-      <article class="card rise">
-        <div class="card-top">
-          <span class="card-tag">Mixed signal PCB</span>
-          <span class="card-date">Jul to Oct 2026</span>
-        </div>
-        <h3>Line following robot controller, rev 3.0</h3>
-        <p class="card-meta">SMTA Bright Electronics Manufacturing Challenge · team UMN GND_Hogs</p>
-        <ul>
-          <li>Five schematic sheets in Altium: PIC18F47Q43 MCU, two TB67H451AFNG H bridges, seven CNY70 reflective sensors, a 74HC595 shift register, MCP73831 Li-ion charger, MCP1802-3.3 LDO.</li>
-          <li>Added a quadrature encoder interface for closed loop wheel speed at 1,080 counts per revolution with PI control, the team's judged custom feature.</li>
-          <li>During integration, found and fixed two pre existing issues: the motor rail against the H bridge 4.5 V minimum and its 3.8 to 4.2 V UVLO band, and sense resistors from 1 Ω down to 0.51 Ω.</li>
-          <li>Shipped the full fabrication and assembly package: ODB++, Gerbers, NC drill, pick and place, BOM, assembly drawing, DRC report.</li>
-        </ul>
-        <div class="specs">
-          <div><b>Encoder</b><i>1,080 counts / rev</i></div>
-          <div><b>Sense R</b><i>1 Ω → 0.51 Ω</i></div>
-          <div><b>Next</b><i>final, SMTA International</i></div>
-        </div>
-      </article>
-
-      <article class="card rise">
-        <div class="card-top">
-          <span class="card-tag">Flight hardware</span>
-          <span class="card-date">Since Sep 2024</span>
-        </div>
-        <h3>Avionics bay PCB and flight state estimator</h3>
-        <p class="card-meta">UMN Rocket Team · GNC and Avionics</p>
-        <ul>
-          <li>Four layer avionics backplane in Altium on a CAN bus, with a separate LoRa telemetry board so telemetry failures cannot take the bus down with them.</li>
-          <li>Multi sensor fusion state estimator in MATLAB and Simulink for real time flight phase detection, with embedded C generated for deployment on the flight computer.</li>
-        </ul>
-        <div class="specs">
-          <div><b>Stackup</b><i>4 layer</i></div>
-          <div><b>Buses</b><i>CAN, LoRa</i></div>
-          <div><b>Target</b><i>flight computer</i></div>
-        </div>
-      </article>
-    </div>
-
-    <div class="hero-actions rise" style="margin-top:30px">
-      <a class="btn" href="research.html">Research next</a>
-      <a class="btn" href="contact.html">Ask me about any of this</a>
-    </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
@@ -212,5 +79,6 @@
 </footer>
 
 <script src="assets/site.js"></script>
+<script src="assets/content.js"></script>
 </body>
 </html>

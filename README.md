@@ -3,28 +3,70 @@
 Personal site. Static HTML, CSS, and JavaScript. No build step, no framework,
 no package manager.
 
+Work, Research, and About build themselves from one markdown file, so adding a
+project or a paper means editing `content/site.md` and pushing. Nothing else
+needs touching.
+
 ## Structure
 
 ```
-index.html        home, with the interactive silicon die and the RTL to GDSII rail
-work.html         chips and boards
-research.html     LIGO, DUNE and NOvA, neuromorphic, publications
-about.html        education, leadership, teaching, toolbox
-contact.html      how to reach me
+index.html          home, with the interactive silicon die and the RTL to GDSII rail
+work.html           shell, filled from content/site.md
+research.html       shell, filled from content/site.md
+about.html          shell, filled from content/site.md
+contact.html        contact
+content/
+  site.md           ALL the content for work, research, and about
 assets/
-  site.css        every style on the site, all colours as CSS variables at the top
-  site.js         sticky nav state and scroll reveal, loaded on every page
-  die.js          the 3D die and the flow rail, loaded on index.html only
-  chirp.js        the strain trace, loaded on research.html only
+  site.css          every style, all colours as CSS variables at the top
+  site.js           sticky nav and scroll reveal, loaded on every page
+  content.js        markdown parser and renderers
+  die.js            the 3D die and the flow rail, index.html only
+  chirp.js          the strain trace, research.html only
 ```
 
-three.js loads from cdnjs on the home page only. If it fails to load, the canvas
-is replaced with a short message and the rest of the page keeps working.
+## Running it locally
 
-## Running it
+`content/site.md` is loaded with `fetch()`, and browsers block that on
+`file://`. Double clicking the HTML shows a notice instead of the content. Serve
+the folder instead:
 
-Open `index.html` in a browser. Keep the `assets` folder next to the HTML files
-or nothing will be styled.
+```
+cd <this folder>
+python3 -m http.server 8000
+```
+
+Then open `http://localhost:8000`. On GitHub Pages it works with no extra setup.
+
+## Adding content
+
+Open `content/site.md`. The format guide is in a comment at the top of that
+file. Short version:
+
+- `#` starts a section (one block on one page)
+- `##` starts an entry inside it
+- `key: value` sets a field, lowercase key, no spaces in the key
+- `-` starts a bullet, anything else is prose
+
+To add a project, copy any `##` block in the Chips section, change the words,
+and save. Order on the page follows order in the file. To add a whole new block
+to a page, copy a `#` block and set `page:` to `work`, `research`, or `about`.
+
+Two conventions worth remembering:
+
+- `specs:` and `metrics:` take `label = value` pairs separated by `|`
+- a `*` at the end of a spec value turns it green, for results that passed
+
+## What still lives in HTML
+
+Deliberately, so the home page works even without a server:
+
+- the hero, the hub cards, and the featured project on `index.html`
+- the page titles and intro paragraphs at the top of each page
+- everything on `contact.html`
+
+If you replace the featured project on the home page, update the matching entry
+in `content/site.md` too.
 
 ## Deploying to GitHub Pages
 
@@ -52,4 +94,12 @@ Changing `--mauve` recolours the die, the flow rail, the links, and the primary
 buttons together.
 
 Fonts are Syne for display, Manrope for body, JetBrains Mono for anything that
-behaves like data. They come from Google Fonts in each page head.
+behaves like data. They load from Google Fonts in each page head.
+
+## One tradeoff to know about
+
+Because the three list pages render their content with JavaScript, that content
+is not in the page source. Search engines that run JavaScript index it fine, and
+`index.html` is fully static, but if you ever want the work page readable
+without JavaScript, the fix is to paste the rendered HTML back into `work.html`
+and drop the `content.js` tag.

@@ -11,9 +11,9 @@
     stick();
   }
 
-  var risers = document.querySelectorAll(".rise");
+  var io = null;
   if ("IntersectionObserver" in window && !reduced) {
-    var io = new IntersectionObserver(function (entries) {
+    io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry, i) {
         if (!entry.isIntersecting) return;
         var el = entry.target;
@@ -21,8 +21,18 @@
         io.unobserve(el);
       });
     }, { rootMargin: "0px 0px -12% 0px", threshold: 0.08 });
-    risers.forEach(function (el) { io.observe(el); });
-  } else {
-    risers.forEach(function (el) { el.classList.add("in"); });
   }
+
+  // Content injected later (see content.js) calls this to join the reveal.
+  window.__reveal = function (root) {
+    var scope = root || document;
+    var risers = scope.querySelectorAll(".rise:not(.in)");
+    if (!io) {
+      risers.forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    risers.forEach(function (el) { io.observe(el); });
+  };
+
+  window.__reveal(document);
 })();

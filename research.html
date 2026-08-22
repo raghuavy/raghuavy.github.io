@@ -53,115 +53,16 @@
   </div>
 </header>
 
-<section class="section tight">
-  <div class="wrap">
-    <div class="log">
-      <article class="entry rise">
-        <div class="entry-when"><span>Since Jan 2024</span>LIGO Scientific Collaboration</div>
-        <div>
-          <h3>Machine learning for signal classification</h3>
-          <p class="entry-who">Prof. Michael Coughlin · University of Minnesota</p>
-          <p class="entry-body">
-            Built a low latency classifier that separates true astrophysical signals from
-            detector noise on heavily class imbalanced data, published in PASP. Now developing
-            an evidential deep learning framework for anomaly and out of distribution detection
-            that splits predictive uncertainty into aleatoric and epistemic parts, using
-            Dirichlet entropy and mutual information to flag rare events rather than forcing
-            every candidate into a known class.
-          </p>
-          <div class="metrics">
-            <div><strong>0.94</strong><span>AUC</span></div>
-            <div><strong>88%</strong><span>accuracy</span></div>
-            <div><strong>PASP</strong><span>peer reviewed</span></div>
-          </div>
-        </div>
-      </article>
+  <div id="md-content" data-page="research"></div>
 
-      <article class="entry rise">
-        <div class="entry-when"><span>Since May 2025</span>DUNE and NOvA</div>
-        <div>
-          <h3>Physics informed machine learning</h3>
-          <p class="entry-who">DUNE and NOvA Collaborations</p>
-          <p class="entry-body">
-            Co-developed a composite loss framework that enforces kinematic constraints inside
-            a regression estimator for neutrino energy reconstruction, so the model cannot buy
-            accuracy by quietly violating the physics it is supposed to be measuring.
-            Contributing author, paper in preparation.
-          </p>
-        </div>
-      </article>
-
-      <article class="entry rise">
-        <div class="entry-when"><span>Since Jan 2026</span>Neuromorphic computing</div>
-        <div>
-          <h3>Cryogenic Josephson junction circuits</h3>
-          <p class="entry-who">Prof. Vlad Pribiag · University of Minnesota</p>
-          <p class="entry-body">
-            Simulating physics based neuromorphic four tunnel Josephson junction circuits in
-            PyTorch, and running the measurement side of the same question: a dilution
-            refrigerator at millikelvin base temperature, automated through QCoDeS with a
-            Lakeshore 372.
-          </p>
-        </div>
-      </article>
-
-      <article class="entry rise">
-        <div class="entry-when"><span>Ongoing</span>Transient classification</div>
-        <div>
-          <h3>Anomaly detection for astronomical transients</h3>
-          <p class="entry-who">First author paper in preparation, ApJ</p>
-          <p class="entry-body">
-            Tracking how a model's belief in a classification moves over the lifetime of a
-            transient, rather than scoring one snapshot. Temporal belief trajectories in an
-            evidential setting give a handle on which objects are genuinely unusual instead of
-            merely early or faint.
-          </p>
-        </div>
-      </article>
+  <section class="section tight">
+    <div class="wrap">
+      <div class="hero-actions rise">
+        <a class="btn" href="about.html">About and toolbox</a>
+        <a class="btn" href="contact.html">Get in touch</a>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="section alt">
-  <div class="wrap">
-    <div class="section-head rise">
-      <p class="mono eyebrow is-research">Papers and honors</p>
-      <h2>Written up.</h2>
-    </div>
-    <ul class="pubs rise">
-      <li>
-        <span class="venue">PASP</span>
-        <span class="title">Astrophysical or Terrestrial: ML Classification of GW Candidates</span>
-        <span class="role">Published</span>
-      </li>
-      <li>
-        <span class="venue">ApJ</span>
-        <span class="title">Anomaly Detection of Astronomical Transients via Temporal Belief Trajectories in Evidential Deep Learning</span>
-        <span class="role">First author, in prep</span>
-      </li>
-      <li>
-        <span class="venue">AppleCiDEr II</span>
-        <span class="title">SpectraNet</span>
-        <span class="role">Contributing author</span>
-      </li>
-      <li>
-        <span class="venue">In prep</span>
-        <span class="title">Can Self-Consistent Kinematic Constraints Be Enforced within Neutrino Energy Estimators?</span>
-        <span class="role">Contributing author</span>
-      </li>
-      <li>
-        <span class="venue">Honors</span>
-        <span class="title">NSF MPS-High grant recipient · LIGO Scientific Collaboration member · UMN CSE Dean's List · GPA 3.8</span>
-        <span class="role">2024 to now</span>
-      </li>
-    </ul>
-
-    <div class="hero-actions rise" style="margin-top:30px">
-      <a class="btn" href="about.html">About and toolbox</a>
-      <a class="btn" href="contact.html">Get in touch</a>
-    </div>
-  </div>
-</section>
+  </section>
 
 </main>
 
@@ -189,6 +90,7 @@
 </footer>
 
 <script src="assets/site.js"></script>
+<script src="assets/content.js"></script>
 <script src="assets/chirp.js"></script>
 </body>
 </html>
