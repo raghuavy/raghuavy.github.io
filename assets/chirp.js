@@ -12,9 +12,9 @@
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var css = getComputedStyle(document.documentElement);
-  var TEAL = css.getPropertyValue("--teal").trim() || "#94e2d5";
-  var DIM = css.getPropertyValue("--s1").trim() || "#45475a";
-  var SAPPHIRE = css.getPropertyValue("--sapphire").trim() || "#74c7ec";
+  var SIGNAL = css.getPropertyValue("--acid").trim() || "#76b900";
+  var NOISE = css.getPropertyValue("--line-2").trim() || "#343434";
+  var HEAD = css.getPropertyValue("--acid-hi").trim() || "#95e600";
 
   var W = 0, H = 0, dpr = 1;
   var clean = [], noisy = [];
@@ -86,24 +86,24 @@
 
     // baseline
     ctx.beginPath();
-    ctx.strokeStyle = "rgba(69,71,90,.5)";
+    ctx.strokeStyle = "rgba(52,52,52,.6)";
     ctx.lineWidth = 1;
     ctx.moveTo(0, H / 2); ctx.lineTo(W, H / 2);
     ctx.stroke();
 
     // raw strain, always present
-    line(noisy, 0, N - 1, DIM, 1, 0, 0.3);
+    line(noisy, 0, N - 1, NOISE, 1, 0, 0.3);
 
     // recovered waveform, drawing left to right
     var head = Math.floor(p * (N - 1));
-    line(clean, 0, head, TEAL, 2, 10, 0.34);
+    line(clean, 0, head, SIGNAL, 2, 10, 0.34);
 
     if (head > 0 && head < N - 1) {
       var hx = (head / (N - 1)) * W;
       var hy = H / 2 - clean[head] * (H * 0.34);
       ctx.beginPath();
-      ctx.fillStyle = SAPPHIRE;
-      ctx.shadowBlur = 12; ctx.shadowColor = SAPPHIRE;
+      ctx.fillStyle = HEAD;
+      ctx.shadowBlur = 12; ctx.shadowColor = HEAD;
       ctx.arc(hx, hy, 3, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0;

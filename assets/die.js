@@ -77,9 +77,11 @@
   }
   if (typeof THREE === "undefined") { bail(); return; }
 
+  /* One hue, laddered by brightness. Lower metals are dark and dense, the top
+     metal is white because that is where the thick power straps live. */
   var C = {
-    mauve: 0xcba6f7, lavender: 0xb4befe, sapphire: 0x74c7ec,
-    teal: 0x94e2d5, peach: 0xfab387, s1: 0x45475a
+    acid: 0x76b900, acidHi: 0x95e600, acidMid: 0x5c8f00, acidLow: 0x3f6600,
+    white: 0xffffff, cellA: 0x333333, cellB: 0x4a4a4a, line: 0x3a3a3a
   };
   var small = window.innerWidth < 900;
   var renderer;
@@ -94,7 +96,7 @@
 
   scene.add(new THREE.AmbientLight(0xffffff, 0.62));
   var key = new THREE.DirectionalLight(0xffffff, 0.85); key.position.set(6, 10, 7); scene.add(key);
-  var rim = new THREE.DirectionalLight(C.mauve, 0.55); rim.position.set(-8, 4, -6); scene.add(rim);
+  var rim = new THREE.DirectionalLight(C.acid, 0.7); rim.position.set(-8, 4, -6); scene.add(rim);
 
   var root = new THREE.Group();
   scene.add(root);
@@ -122,18 +124,18 @@
 
   /* substrate */
   var gDie = group("die", 0);
-  var sub = new THREE.Mesh(new THREE.BoxGeometry(W, 0.34, W), mat(0x181825));
+  var sub = new THREE.Mesh(new THREE.BoxGeometry(W, 0.34, W), mat(0x0d0d0d));
   sub.material.emissiveIntensity = 0.04;
   gDie.add(sub);
   gDie.add(new THREE.Mesh(
     new THREE.BoxGeometry(W * 0.985, 0.36, W * 0.985),
-    new THREE.MeshBasicMaterial({ color: C.s1, wireframe: true, transparent: true, opacity: 0.55 })
+    new THREE.MeshBasicMaterial({ color: C.line, wireframe: true, transparent: true, opacity: 0.7 })
   ));
 
   /* pad ring */
   var gPads = group("pads", 0.2);
   var padGeo = new THREE.BoxGeometry(0.28, 0.1, 0.28);
-  var padMat = mat(C.peach); padMat.emissiveIntensity = 0.32;
+  var padMat = mat(C.acid); padMat.emissiveIntensity = 0.34;
   var perEdge = small ? 6 : 8;
   for (var e = 0; e < 4; e++) {
     for (var p = 0; p < perEdge; p++) {
@@ -153,8 +155,8 @@
   var cells = [];
   var rows = small ? 5 : 7;
   var cellGeo = new THREE.BoxGeometry(1, 0.18, 0.34);
-  var cellA = mat(C.lavender); cellA.emissiveIntensity = 0.12;
-  var cellB = mat(C.sapphire); cellB.emissiveIntensity = 0.12;
+  var cellA = mat(C.cellA); cellA.emissiveIntensity = 0.06;
+  var cellB = mat(C.cellB); cellB.emissiveIntensity = 0.06;
   for (var r = 0; r < rows; r++) {
     var z = (r / (rows - 1) - 0.5) * (W - 1.6);
     var x = -(W - 1.4) / 2;
@@ -178,7 +180,7 @@
 
   /* clock tree */
   var gClock = group("clock", 0.62);
-  var clkMat = mat(C.peach); clkMat.emissiveIntensity = 0.62;
+  var clkMat = mat(C.white); clkMat.emissiveIntensity = 0.62;
   function trunk(tx, tz, len, horiz) {
     var m = new THREE.Mesh(
       new THREE.BoxGeometry(horiz ? len : 0.05, 0.05, horiz ? 0.05 : len),
@@ -195,17 +197,17 @@
 
   /* metal stack: thin and dense at the bottom, thick and sparse at the top */
   var LAYERS = [
-    { n: small ? 10 : 15, w: 0.05, y: 0.86, axis: "x", color: C.mauve },
-    { n: small ? 9 : 13, w: 0.07, y: 1.14, axis: "z", color: C.lavender },
-    { n: small ? 7 : 9, w: 0.11, y: 1.42, axis: "x", color: C.sapphire },
-    { n: small ? 5 : 7, w: 0.16, y: 1.70, axis: "z", color: C.teal },
-    { n: 4, w: 0.30, y: 1.98, axis: "x", color: C.peach }
+    { n: small ? 10 : 15, w: 0.05, y: 0.86, axis: "x", color: C.acidLow, glow: 0.55 },
+    { n: small ? 9 : 13, w: 0.07, y: 1.14, axis: "z", color: C.acidMid, glow: 0.46 },
+    { n: small ? 7 : 9, w: 0.11, y: 1.42, axis: "x", color: C.acid, glow: 0.4 },
+    { n: small ? 5 : 7, w: 0.16, y: 1.70, axis: "z", color: C.acidHi, glow: 0.36 },
+    { n: 4, w: 0.30, y: 1.98, axis: "x", color: C.white, glow: 0.22 }
   ];
   var tracks = [];
   LAYERS.forEach(function (L, li) {
     var g = group("m" + li, L.y);
     var mm = mat(L.color);
-    mm.emissiveIntensity = 0.38; mm.metalness = 0.55; mm.roughness = 0.3;
+    mm.emissiveIntensity = L.glow; mm.metalness = 0.55; mm.roughness = 0.3;
     var span = W - 0.7;
     for (var i = 0; i < L.n; i++) {
       var t = (i + 0.5) / L.n - 0.5;
@@ -218,7 +220,7 @@
       g.add(bar);
       if (i % 2 === 0) tracks.push({ axis: L.axis, pos: pos, y: L.y, span: span, color: L.color, li: li });
     }
-    var viaMat = mat(C.s1); viaMat.emissiveIntensity = 0.1;
+    var viaMat = mat(C.line); viaMat.emissiveIntensity = 0.08;
     for (var v = 0; v < (small ? 4 : 7); v++) {
       var via = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.28, 0.07), viaMat);
       via.position.set((Math.random() - 0.5) * span * 0.9, -0.16, (Math.random() - 0.5) * span * 0.9);
@@ -244,7 +246,7 @@
 
   /* RTL: described but not yet physical, so it floats as wireframe */
   var gRtl = group("rtl", 0.95);
-  var rtlMat = new THREE.MeshBasicMaterial({ color: C.mauve, wireframe: true, transparent: true, opacity: 0.5 });
+  var rtlMat = new THREE.MeshBasicMaterial({ color: C.acid, wireframe: true, transparent: true, opacity: 0.55 });
   var rtlBoxes = [];
   for (var b2 = 0; b2 < (small ? 9 : 14); b2++) {
     var blk = new THREE.Mesh(

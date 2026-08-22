@@ -95,10 +95,21 @@ specs: ISA = RV32I / RV64I | Depth = 5 stage | Flow = DC + Innovus
 - Student led tapeout collaboration with the Berkeley Tapeout Decal, Cornell C2S2, and Georgia Tech Silicon Jackets.
 
 
+# Posit lab
+page: work
+layout: widget
+widget: posit
+anchor: posit
+alt: yes
+eyebrow: Live demo
+heading: The posit8 format, running in your browser.
+
+This is the arithmetic from the codec above, written out in JavaScript so you can poke at it directly. Flip a bit and watch the regime run grow or shrink and the field boundaries move with it. The plot underneath is the reason the format is interesting: accuracy is not spread evenly, it piles up around 1.0 where real workloads live.
+
+
 # Boards
 page: work
 layout: cards
-alt: yes
 eyebrow: Boards
 accent: silicon
 heading: Mixed signal hardware that has to survive the real world.

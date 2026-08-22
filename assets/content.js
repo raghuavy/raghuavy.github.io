@@ -221,9 +221,15 @@
       + "</dl><dl>" + rows.slice(half).join("") + "</dl></div>";
   }
 
+  // A slot for an interactive module. The module itself finds its own host
+  // by data-widget and hydrates it, so adding one is a two line markdown edit.
+  function widgetLayout(sec) {
+    return '<div class="rise" data-widget="' + esc((one(sec.f.widget) || "").toLowerCase()) + '"></div>';
+  }
+
   var LAYOUTS = {
     cards: cardsLayout, log: logLayout, list: listLayout,
-    panels: panelsLayout, rows: rowsLayout
+    panels: panelsLayout, rows: rowsLayout, widget: widgetLayout
   };
 
   /* ---------- section shell ---------- */
@@ -247,7 +253,9 @@
       head += "</div>";
     }
 
-    return '<section class="' + cls + '"><div class="wrap">' + head + build(sec) + "</div></section>";
+    var anchor = one(sec.f.anchor);
+    return '<section class="' + cls + '"' + (anchor ? ' id="' + esc(anchor) + '"' : "")
+      + '><div class="wrap">' + head + build(sec) + "</div></section>";
   }
 
   function noticeHtml(reason) {
@@ -281,7 +289,12 @@
       } else {
         host.innerHTML = mine.map(sectionHtml).join("");
       }
+      if (window.__mountPosit) window.__mountPosit();
       if (window.__reveal) window.__reveal(host);
+      if (location.hash) {
+        var target = document.querySelector(location.hash);
+        if (target) target.scrollIntoView();
+      }
     })
     .catch(function (err) {
       host.innerHTML = noticeHtml(err && err.message);

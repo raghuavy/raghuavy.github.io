@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Avyukt Raghuvanshi · RTL to silicon</title>
 <meta name="description" content="Avyukt Raghuvanshi. Electrical Engineering (Honors) and Physics at the University of Minnesota. Digital design, RTL to GDSII, tapeout, and machine learning for gravitational wave and neutrino data.">
-<meta name="theme-color" content="#1e1e2e">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231e1e2e'/%3E%3Crect x='9' y='9' width='14' height='14' rx='2' fill='none' stroke='%23cba6f7' stroke-width='2'/%3E%3Cpath d='M16 3v6M16 23v6M3 16h6M23 16h6' stroke='%23cba6f7' stroke-width='2'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Crect x='9' y='9' width='14' height='14' fill='none' stroke='%2376b900' stroke-width='2.4'/%3E%3Cpath d='M16 3v6M16 23v6M3 16h6M23 16h6' stroke='%2376b900' stroke-width='2.4'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -60,13 +60,13 @@
       <div class="stage">
         <canvas id="die-canvas" aria-label="Interactive model of a hardened silicon die"></canvas>
         <ul class="stack" id="stack">
-          <li><i></i>diff</li>
-          <li><i></i>poly</li>
-          <li><i></i>met1</li>
-          <li><i></i>met2</li>
-          <li><i></i>met3</li>
-          <li><i></i>met4</li>
-          <li><i></i>met5</li>
+          <li style="--c:#243a00"><i></i>diff</li>
+          <li style="--c:#2c4600"><i></i>poly</li>
+          <li style="--c:#3f6600"><i></i>met1</li>
+          <li style="--c:#5c8f00"><i></i>met2</li>
+          <li style="--c:#76b900"><i></i>met3</li>
+          <li style="--c:#95e600"><i></i>met4</li>
+          <li style="--c:#ffffff"><i></i>met5</li>
         </ul>
         <p class="drag-hint">Drag to orbit</p>
         <div class="fallback" id="fallback">
@@ -180,6 +180,23 @@
   </div>
 </section>
 
+<section class="section alt">
+  <div class="wrap">
+    <div class="section-head rise">
+      <p class="mono eyebrow">Live demo</p>
+      <h2>Play with an 8 bit posit.</h2>
+      <p class="lede">
+        I am building a posit8 codec in SystemVerilog this term. The same arithmetic is
+        written out in JavaScript on the work page, so you can flip individual bits and
+        watch the regime, exponent, and fraction fields redraw themselves around the change.
+      </p>
+    </div>
+    <div class="hero-actions rise">
+      <a class="btn is-primary" href="work.html#posit">Open the posit lab</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer class="foot">
@@ -200,7 +217,7 @@
     </div>
     <div class="foot-note">
       <span>Avyukt Raghuvanshi · B.S. EE (Honors) and Physics, expected May 2028</span>
-      <span>Built with three.js. Palette is Catppuccin Mocha.</span>
+      <span>No framework, no build step, three.js is the only dependency.</span>
     </div>
   </div>
 </footer>

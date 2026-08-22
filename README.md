@@ -23,7 +23,24 @@ assets/
   content.js        markdown parser and renderers
   die.js            the 3D die and the flow rail, index.html only
   chirp.js          the strain trace, research.html only
+  posit.js          the posit8 decoder, encoder, and accuracy plot
 ```
+
+## The posit lab
+
+`assets/posit.js` is a real posit8 (es = 2) implementation, not a mock up:
+a decoder, a round to nearest even encoder that saturates instead of
+overflowing, and the tapered accuracy plot. It exposes `window.posit8` with
+`decode`, `encode`, and the full 256 entry table if you want to use it from the
+console.
+
+It is checked against the reference values for maxpos, minpos, 1.0 and the
+codes around it, monotonicity across all 127 positive codes, two's complement
+symmetry, and a full round trip over every code. Encoding is verified to return
+the true nearest value on random inputs across sixteen decades.
+
+If you change the SystemVerilog codec, this is the thing to keep in step with
+it.
 
 ## Running it locally
 
@@ -88,12 +105,16 @@ Drop those PDFs in the same folder as the HTML files, or rename the links.
 ## Changing the look
 
 Everything visual is a variable in the `:root` block at the top of
-`assets/site.css`. The palette is Catppuccin Mocha. Accent colours carry meaning
-rather than decoration: mauve for silicon, teal for physics, peach for people.
-Changing `--mauve` recolours the die, the flow rail, the links, and the primary
-buttons together.
+`assets/site.css`. The site is near monochrome on black with a single accent,
+`--acid` (#76B900). Because it is the only colour on the page, it is reserved
+for things that mean something: brand marks, live state, and results that
+passed. Measured values are white, everything else is grey.
 
-Fonts are Syne for display, Manrope for body, JetBrains Mono for anything that
+Changing `--acid` recolours the die, the flow rail, the chirp, the posit lab,
+the links, and the primary buttons together. The metal stack in the 3D model is
+a brightness ladder of that same hue, defined in `assets/die.js`.
+
+Fonts are Archivo for display, Inter for body, JetBrains Mono for anything that
 behaves like data. They load from Google Fonts in each page head.
 
 ## One tradeoff to know about
