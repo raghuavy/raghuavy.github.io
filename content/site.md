@@ -209,9 +209,9 @@ heading: A club, then a network.
 
 ## Stone Arch Silicon (SASi)
 tag: Founder and president
-meta: University of Minnesota · founded 2025 · github.com/UMN-ASIC-CLUB
+meta: University of Minnesota · founded 2025 · [club site](https://stone-arch-silicon.github.io/stone-arch-silicon/)
 
-Started the undergraduate ASIC and EDA organization with Prof. Yu (Kevin) Cao and the Minnesota Nano Center, and secured $20,000 in departmental funding from UMN ECE. Student teams work on RISC-V cores, accelerator design, RTL to GDS, tapeout, and EDA tool training. It also anchors the ASIC Network, a multi university group that now plans shuttle runs together rather than separately.
+Started the undergraduate ASIC and EDA organization with Prof. Yu (Kevin) Cao and the Minnesota Nano Center, and secured $20,000 in departmental funding from UMN ECE. Student teams work on RISC-V cores, accelerator design, RTL to GDS, tapeout, and EDA tool training. It also anchors the [ASIC Network](https://asicnetwork.net/), a multi university group that now plans shuttle runs together rather than separately.
 
 - UC Berkeley, Tapeout Decal
 - Cornell, C2S2
