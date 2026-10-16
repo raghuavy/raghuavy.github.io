@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · Avyukt Raghuvanshi</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#000000">
+<script>
+  // This site used to live at /about_me/. Old links land here, so send them
+  // to the same page at the root before anything renders.
+  (function () {
+    var p = location.pathname;
+    if (p === "/about_me" || p.indexOf("/about_me/") === 0) {
+      location.replace((p.slice("/about_me".length) || "/") + location.search + location.hash);
+    }
+  })();
+</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Crect x='9' y='9' width='14' height='14' fill='none' stroke='%2376b900' stroke-width='2.4'/%3E%3Cpath d='M16 3v6M16 23v6M3 16h6M23 16h6' stroke='%2376b900' stroke-width='2.4'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="nav-mark" href="/">Avyukt Raghuvanshi <span>/ EE + Physics</span></a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/work.html">Work</a>
+      <a href="/research.html">Research</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main id="main">
+<header class="phead">
+  <div class="wrap">
+    <p class="mono eyebrow">404</p>
+    <h1>Nothing at this address.</h1>
+    <p class="lede">
+      The page may have moved. Everything on the site is one click from the home page.
+    </p>
+    <div class="hero-actions" style="margin-top:28px">
+      <a class="btn is-primary" href="/">Go to the home page</a>
+    </div>
+  </div>
+</header>
+</main>
+
+</body>
+</html>

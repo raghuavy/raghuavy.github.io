@@ -102,6 +102,20 @@ Avyukt_Raghuvanshi_Resume_Software.pdf
 
 Drop those PDFs in the same folder as the HTML files, or rename the links.
 
+## Search engines
+
+The site lives at https://raghuavy.github.io/, which only works while this repo
+is named `raghuavy.github.io`. Every page has a canonical tag pointing at that
+address, and `index.html` carries a JSON-LD block (Person, ProfilePage, and the
+two organizations) that tells Google who the site is about. Keep that block in
+step with the visible text when your role or links change.
+
+- `sitemap.xml` lists the five pages. Add any new page there and give it a
+  canonical tag like the others.
+- `google0acc50ce945cb379.html` keeps the site verified in Google Search
+  Console. Do not delete it.
+- `404.html` forwards old `/about_me/...` links to the same page at the root.
+
 ## Changing the look
 
 Everything visual is a variable in the `:root` block at the top of
