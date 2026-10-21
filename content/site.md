@@ -49,7 +49,23 @@ layout: cards
 tight: yes
 eyebrow: Chips
 accent: silicon
-heading: RTL, and what happens after it.
+heading: Physical design and verification.
+
+## Princeton · HALO / SCALO
+tag: Early discussions
+date: 2026
+meta: Prof. Abhishek Bhattacharjee · Raghav · upcoming chip tapeouts
+wide: yes
+
+In discussions about contributing to upcoming chip tapeouts building on the HALO (ISCA ’20) and SCALO (ISCA ’23) systems. My focus is physical design and verification.
+
+## TSMC 180 nm tapeout
+tag: Planned tapeout
+date: 2026–2027
+meta: SASi · ASIC Network · UCLA
+specs: Process = TSMC 180 nm | Status = In preparation
+
+Leading the SASi and ASIC Network effort toward a TSMC 180 nm tapeout with UCLA, coordinating design, verification, and IP integration.
 
 ## 2×2 systolic array matrix multiplier
 tag: Full RTL to GDSII
@@ -59,9 +75,9 @@ link: https://github.com/raghuavy/2x2_systolic_array_matrix_mult
 wide: yes
 specs: Process = SKY130 | Die = 388 × 378 µm | Fmax = 50 MHz | Setup / hold = no violations* | DRC = clean* | XOR check = verified*
 
-- Output stationary 2×2 array in SystemVerilog: four processing elements, each a MAC with a local accumulator, operands rippling one hop per cycle. Verified with a skewed input testbench.
-- Hardened through the full flow on SKY130, from Yosys synthesis through OpenROAD floorplan, placement, clock tree, and routing, then Magic and KLayout signoff.
-- Also exploring RTL and HLS for sparse by sparse matrix multiplication aimed at AI and HPC workloads.
+- Designed and verified a four-PE SystemVerilog systolic array with a skewed-input testbench.
+- Completed synthesis, placement, CTS, routing, timing closure, and physical verification on SKY130.
+
 
 ## Multi university SKY130 SoC tapeout
 tag: Tapeout, in flight
@@ -69,9 +85,9 @@ date: Since 2026
 meta: ASIC Network · joint with UC Berkeley
 specs: Target = December shuttle | Chassis = Chipyard | Process = SKY130
 
-- Organizing a shared SoC tapeout that uses Chipyard as a common chassis, so schools contribute digital, analog, and accelerator IP into one system instead of separate tiles.
-- Set the integration model: SystemVerilog IP drops in as black boxes so Chisel is not a prerequisite, on one baseline fully open source flow every school can run, with Cadence and Synopsys as optional per school extensions.
-- Leading cross institution scoping and early block interface definition so contributed IP still integrates during integration week.
+- Coordinating shared SoC integration and block interfaces across university teams.
+- Common Chipyard chassis and open-source flow, with commercial EDA extensions.
+
 
 ## 8 bit posit codec for an open source arithmetic unit
 tag: UROP funded
@@ -79,9 +95,9 @@ date: Fall 2026
 meta: Prof. Yu (Kevin) Cao · three person unit, I own the codec
 specs: Codes checked = 256 of 256* | Reference = SoftPosit | Tapeout = TSMC 180 nm, with UCLA
 
-- posit8 with es = 2: a decoder and a round to nearest even encoder in SystemVerilog, plus the shared unpacked interface the multiplier and adder or quire datapaths consume.
-- Reusable cocotb and Verilator harness for exhaustive checking against SoftPosit, all 256 codes plus decode and encode round trip identity, scaling to the 65,536 pair check for the full unit.
-- Hardening the codec standalone through OpenLane on SKY130 for area, critical path delay, and maximum frequency characterization.
+- Developing a SystemVerilog posit8 codec with exhaustive SoftPosit reference checks using cocotb and Verilator.
+- Characterizing area and timing through physical implementation on SKY130.
+
 
 ## Pipelined RISC-V processors and an RTL to GDS flow
 tag: Cores and flow
@@ -94,17 +110,6 @@ specs: ISA = RV32I / RV64I | Depth = 5 stage | Flow = DC + Innovus
 - Building the club flow that student teams reuse, so a new member can go from a synthesizable module to a placed and routed block without assembling a toolchain first.
 - Student led tapeout collaboration with the Berkeley Tapeout Decal, Cornell C2S2, and Georgia Tech Silicon Jackets.
 
-
-# Posit lab
-page: work
-layout: widget
-widget: posit
-anchor: posit
-alt: yes
-eyebrow: Live demo
-heading: The posit8 format, running in your browser.
-
-This is the arithmetic from the codec above, written out in JavaScript so you can poke at it directly. Flip a bit and watch the regime run grow or shrink and the field boundaries move with it. The plot underneath is the reason the format is interesting: accuracy is not spread evenly, it piles up around 1.0 where real workloads live.
 
 
 # Boards
@@ -211,12 +216,24 @@ heading: A club, then a network.
 tag: Founder and president
 meta: University of Minnesota · founded 2025 · [club site](https://stone-arch-silicon.github.io/stone-arch-silicon/)
 
-Started the undergraduate ASIC and EDA organization with Prof. Yu (Kevin) Cao and the Minnesota Nano Center, and secured $20,000 in departmental funding from UMN ECE. Student teams work on RISC-V cores, accelerator design, RTL to GDS, tapeout, and EDA tool training. It also anchors the [ASIC Network](https://asicnetwork.net/), a multi university group that now plans shuttle runs together rather than separately.
+Started the undergraduate ASIC and EDA organization with Prof. Yu (Kevin) Cao and the Minnesota Nano Center, and secured $20,000 in departmental funding from UMN ECE. Student teams work on RISC-V cores, accelerator design, RTL to GDS, tapeout, and EDA tool training. 
 
 - UC Berkeley, Tapeout Decal
 - Cornell, C2S2
 - Georgia Tech, Silicon Jackets
 - MIT and others joining
+
+## ASIC Network
+tag: Founder
+meta: Multi-university chip design collaboration · [ASIC Network](https://asicnetwork.net/)
+
+Founded the ASIC Network to connect university chip design groups around shared IP and tapeouts. Our upcoming effort targets TSMC 180 nm with UCLA.
+
+## Industry
+tag: Interview offers
+meta: Texas Instruments · Forward Edge ASIC
+
+Received interview offers from Texas Instruments and Forward Edge ASIC.
 
 ## Lab sections and office hours
 tag: Teaching
@@ -224,7 +241,7 @@ meta: University of Minnesota · Aug to Dec 2025
 item: EE 2361: Introduction to Microcontrollers = PIC24 architecture · about 30 students
 item: EE 2301: Digital Systems Design = Boolean logic, FSMs, Verilog, Xilinx FPGAs · about 30 students
 
-Two semesters of watching where students actually get stuck, which is most of the reason the club material is built the way it is.
+Teaching experience in microcontrollers and digital systems design.
 
 
 # Toolbox
@@ -241,8 +258,8 @@ items: Verilog, SystemVerilog, HLS
 ## Verification
 items: cocotb, Verilator, Synopsys VCS
 
-## Digital EDA
-items: Synopsys Design Compiler, Cadence Innovus, Vivado
+## Physical design
+items: Synthesis, floorplanning, placement, CTS, routing, timing closure, physical verification, Synopsys Design Compiler, Cadence Innovus
 
 ## Open flow
 items: OpenLane, Yosys, OpenROAD, Magic, KLayout
