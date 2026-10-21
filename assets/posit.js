@@ -148,8 +148,8 @@
       +   '<div class="bits" id="p-bits"></div>'
       +   '<div class="posit-legend">'
       +     '<span><i style="background:var(--text);border-color:var(--text)"></i>sign</span>'
-      +     '<span><i style="background:var(--acid);border-color:var(--acid)"></i>regime</span>'
-      +     '<span><i style="border-color:var(--acid-mid)"></i>regime end</span>'
+      +     '<span><i style="background:#9d9c99;border-color:#9d9c99"></i>regime</span>'
+      +     '<span><i style="border-color:#9d9c99"></i>regime end</span>'
       +     '<span><i style="background:var(--line)"></i>exponent</span>'
       +     '<span><i></i>fraction</span>'
       +   '</div>'
@@ -209,7 +209,7 @@
     var line = pts.map(function (p, i) { return (i ? "L" : "M") + p.x.toFixed(1) + " " + p.y.toFixed(1); }).join(" ");
     var area = line + " L" + pts[pts.length - 1].x.toFixed(1) + " " + BASE + " L" + pts[0].x.toFixed(1) + " " + BASE + " Z";
 
-    var s = '<path d="' + area + '" fill="rgba(118,185,0,.13)"/>'
+    var s = '<path d="' + area + '" fill="rgba(255,255,255,.07)"/>'
       + '<path d="' + line + '" fill="none" stroke="var(--acid)" stroke-width="1.5"/>'
       + '<line x1="0" y1="' + BASE + '" x2="' + width + '" y2="' + BASE + '" stroke="var(--line-2)" stroke-width="1"/>';
 

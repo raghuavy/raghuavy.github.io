@@ -12,9 +12,9 @@
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var css = getComputedStyle(document.documentElement);
-  var SIGNAL = css.getPropertyValue("--acid").trim() || "#76b900";
+  var SIGNAL = css.getPropertyValue("--acid").trim() || "#ffffff";
   var NOISE = css.getPropertyValue("--line-2").trim() || "#343434";
-  var HEAD = css.getPropertyValue("--acid-hi").trim() || "#95e600";
+  var HEAD = css.getPropertyValue("--acid-hi").trim() || "#ffffff";
 
   var W = 0, H = 0, dpr = 1;
   var clean = [], noisy = [];

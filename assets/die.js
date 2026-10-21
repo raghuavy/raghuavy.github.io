@@ -77,11 +77,12 @@
   }
   if (typeof THREE === "undefined") { bail(); return; }
 
-  /* One hue, laddered by brightness. Lower metals are dark and dense, the top
-     metal is white because that is where the thick power straps live. */
+  /* Silver, laddered by brightness. Lower metals are dark and dense, the top
+     metal is white because that is where the thick power straps live. Keep in
+     step with the legend colours in index.html (#stack). */
   var C = {
-    acid: 0x76b900, acidHi: 0x95e600, acidMid: 0x5c8f00, acidLow: 0x3f6600,
-    white: 0xffffff, cellA: 0x333333, cellB: 0x4a4a4a, line: 0x3a3a3a
+    acid: 0xc4c3bf, acidHi: 0xe2e1dd, acidMid: 0xa3a29e, acidLow: 0x858582,
+    white: 0xffffff, cellA: 0x2e2e2e, cellB: 0x454545, line: 0x3a3a3a
   };
   var small = window.innerWidth < 900;
   var renderer;
