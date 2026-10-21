@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Avyukt Raghuvanshi · RTL to silicon</title>
 <meta name="description" content="Avyukt Raghuvanshi. Electrical Engineering (Honors) and Physics at the University of Minnesota. Digital design, RTL to GDSII, tapeout, and machine learning for gravitational wave and neutrino data.">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#050505">
 <link rel="canonical" href="https://raghuavy.github.io/">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Avyukt Raghuvanshi">
@@ -131,10 +131,9 @@
   ]
 }
 </script>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Crect x='9' y='9' width='14' height='14' fill='none' stroke='%2376b900' stroke-width='2.4'/%3E%3Cpath d='M16 3v6M16 23v6M3 16h6M23 16h6' stroke='%2376b900' stroke-width='2.4'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23050505'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2'%3E%3Cpath d='M10.5 4a5.5 5.5 0 0 0 11 0'/%3E%3Ccircle cx='16' cy='14.5' r='5.5'/%3E%3Cpath d='M16 20v9M11.5 25h9'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preload" href="assets/fonts/CormorantGaramond-Variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Inter-Variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
@@ -156,26 +155,55 @@
 
 <main id="main">
 
+<!-- HERO: the Hermes engraving as a masthead (see README, "Hero art") -->
 <header class="hero">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <p class="mono eyebrow">Minneapolis, MN · University of Minnesota</p>
-        <h1>I take RTL all the way to <em>silicon</em>.</h1>
-        <p class="lede">
-          I'm Avyukt (Avi) Raghuvanshi, an Electrical Engineering (Honors) and Physics
-          undergraduate at the University of Minnesota and the founder of Stone Arch Silicon,
-          the university's chip design club. I write SystemVerilog,
-          harden it through open source and commercial flows, and send it to a shuttle.
-          The other half of my week goes to machine learning on gravitational wave and
-          neutrino data with the LIGO, DUNE, and NOvA collaborations.
-        </p>
-        <div class="hero-actions">
-          <a class="btn is-primary" href="work.html">See the work</a>
-          <a class="btn" href="research.html">Research</a>
-          <a class="btn" href="contact.html">Get in touch</a>
-        </div>
+  <div class="hero-art" aria-hidden="true">
+    <picture>
+      <source srcset="assets/hermes.webp" type="image/webp">
+      <img src="assets/hermes.jpg" width="2800" height="698" alt="" fetchpriority="high">
+    </picture>
+    <span class="hero-glint"></span>
+    <span class="hero-flash"></span>
+  </div>
+  <div class="wrap hero-inner">
+    <p class="mono eyebrow">Minneapolis, MN · University of Minnesota</p>
+    <h1>I take RTL all the way to <em>silicon</em>.</h1>
+    <p class="lede">
+      I'm Avyukt (Avi) Raghuvanshi, an Electrical Engineering (Honors) and Physics
+      undergraduate at the University of Minnesota and the founder of Stone Arch Silicon,
+      the university's chip design club. I write SystemVerilog,
+      harden it through open source and commercial flows, and send it to a shuttle.
+      The other half of my week goes to machine learning on gravitational wave and
+      neutrino data with the LIGO, DUNE, and NOvA collaborations.
+    </p>
+    <div class="hero-actions">
+      <a class="btn is-primary" href="work.html">See the work</a>
+      <a class="btn" href="research.html">Research</a>
+      <a class="btn" href="contact.html">Get in touch</a>
+    </div>
+    <div class="hero-foot">
+      <a href="#silicon" style="text-decoration:none">The die below is real &darr;</a>
+      <button class="motion-btn" id="motionBtn" type="button" aria-pressed="false">
+        <i aria-hidden="true">
+          <svg class="ic-pause" viewBox="0 0 8 8"><path d="M1.5 0v8M6.5 0v8" stroke="currentColor" stroke-width="1.6"/></svg>
+          <svg class="ic-play" viewBox="0 0 8 8"><path d="M1 0l7 4-7 4z" fill="currentColor"/></svg>
+        </i>
+        <span id="motionLabel">Pause motion</span>
+      </button>
+    </div>
+  </div>
+</header>
 
+<section class="section" id="silicon">
+  <div class="wrap">
+    <div class="die-grid">
+      <div class="section-head rise">
+        <p class="mono eyebrow is-silicon">Most recent silicon</p>
+        <h2>The die on the home page is real.</h2>
+        <p class="lede">
+          It is a 2×2 systolic array I designed and hardened end to end. Every number in the
+          strip below came off the run, not off a datasheet.
+        </p>
         <div class="sheet">
           <div><b>On screen</b><i>2×2 systolic array</i></div>
           <div><b>Process</b><i>SkyWater 130 nm</i></div>
@@ -187,12 +215,12 @@
       <div class="stage">
         <canvas id="die-canvas" aria-label="Interactive model of a hardened silicon die"></canvas>
         <ul class="stack" id="stack">
-          <li style="--c:#243a00"><i></i>diff</li>
-          <li style="--c:#2c4600"><i></i>poly</li>
-          <li style="--c:#3f6600"><i></i>met1</li>
-          <li style="--c:#5c8f00"><i></i>met2</li>
-          <li style="--c:#76b900"><i></i>met3</li>
-          <li style="--c:#95e600"><i></i>met4</li>
+          <li style="--c:#5a5a58"><i></i>diff</li>
+          <li style="--c:#6e6e6b"><i></i>poly</li>
+          <li style="--c:#858582"><i></i>met1</li>
+          <li style="--c:#a3a29e"><i></i>met2</li>
+          <li style="--c:#c4c3bf"><i></i>met3</li>
+          <li style="--c:#e2e1dd"><i></i>met4</li>
           <li style="--c:#ffffff"><i></i>met5</li>
         </ul>
         <p class="drag-hint">Drag to orbit</p>
@@ -201,13 +229,38 @@
         </div>
       </div>
     </div>
-  </div>
-</header>
 
-<section class="flow">
-  <div class="wrap">
-    <div class="flow-track" id="flow" role="group" aria-label="RTL to GDSII flow"></div>
-    <p class="flow-note" id="flow-note"></p>
+    <div class="flow">
+      <div class="flow-track" id="flow" role="group" aria-label="RTL to GDSII flow"></div>
+      <p class="flow-note" id="flow-note"></p>
+    </div>
+
+    <div class="cards" style="margin-top:clamp(36px,6vh,60px)">
+      <a class="card rise is-wide" href="https://github.com/raghuavy/2x2_systolic_array_matrix_mult" target="_blank" rel="noopener">
+        <div class="card-top">
+          <span class="card-tag">Full RTL to GDSII</span>
+          <span class="card-date">2026</span>
+        </div>
+        <h3>2×2 systolic array matrix multiplier</h3>
+        <p class="card-meta">SystemVerilog · OpenLane · Yosys · OpenROAD · Magic · KLayout</p>
+        <ul>
+          <li>Output stationary array of four processing elements, each a MAC with a local accumulator, operands rippling one hop per cycle. Verified with a skewed input testbench.</li>
+          <li>Hardened through synthesis, floorplan, placement, clock tree, routing, then Magic and KLayout signoff.</li>
+        </ul>
+        <div class="specs">
+          <div><b>Process</b><i>SKY130</i></div>
+          <div><b>Die</b><i>388 × 378 µm</i></div>
+          <div><b>Fmax</b><i>50 MHz</i></div>
+          <div><b>Setup / hold</b><i class="ok">no violations</i></div>
+          <div><b>DRC</b><i class="ok">clean</i></div>
+          <div><b>XOR check</b><i class="ok">verified</i></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="hero-actions rise" style="margin-top:26px">
+      <a class="btn" href="work.html">All six projects</a>
+    </div>
   </div>
 </section>
 
@@ -270,46 +323,6 @@
 <section class="section">
   <div class="wrap">
     <div class="section-head rise">
-      <p class="mono eyebrow is-silicon">Most recent silicon</p>
-      <h2>The die on the home page is real.</h2>
-      <p class="lede">
-        It is a 2×2 systolic array I designed and hardened end to end. Every number in the
-        strip below came off the run, not off a datasheet.
-      </p>
-    </div>
-
-    <div class="cards">
-      <a class="card rise is-wide" href="https://github.com/raghuavy/2x2_systolic_array_matrix_mult" target="_blank" rel="noopener">
-        <div class="card-top">
-          <span class="card-tag">Full RTL to GDSII</span>
-          <span class="card-date">2026</span>
-        </div>
-        <h3>2×2 systolic array matrix multiplier</h3>
-        <p class="card-meta">SystemVerilog · OpenLane · Yosys · OpenROAD · Magic · KLayout</p>
-        <ul>
-          <li>Output stationary array of four processing elements, each a MAC with a local accumulator, operands rippling one hop per cycle. Verified with a skewed input testbench.</li>
-          <li>Hardened through synthesis, floorplan, placement, clock tree, routing, then Magic and KLayout signoff.</li>
-        </ul>
-        <div class="specs">
-          <div><b>Process</b><i>SKY130</i></div>
-          <div><b>Die</b><i>388 × 378 µm</i></div>
-          <div><b>Fmax</b><i>50 MHz</i></div>
-          <div><b>Setup / hold</b><i class="ok">no violations</i></div>
-          <div><b>DRC</b><i class="ok">clean</i></div>
-          <div><b>XOR check</b><i class="ok">verified</i></div>
-        </div>
-      </a>
-    </div>
-
-    <div class="hero-actions rise" style="margin-top:26px">
-      <a class="btn" href="work.html">All six projects</a>
-    </div>
-  </div>
-</section>
-
-<section class="section alt">
-  <div class="wrap">
-    <div class="section-head rise">
       <p class="mono eyebrow">Live demo</p>
       <h2>Play with an 8 bit posit.</h2>
       <p class="lede">
@@ -327,6 +340,7 @@
 </main>
 
 <footer class="foot">
+  <div class="cornice" aria-hidden="true"></div>
   <div class="wrap">
     <div class="foot-grid">
       <div>

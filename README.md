@@ -10,7 +10,7 @@ needs touching.
 ## Structure
 
 ```
-index.html          home, with the interactive silicon die and the RTL to GDSII rail
+index.html          home: the Hermes engraving, then the interactive silicon die and the RTL to GDSII rail
 work.html           shell, filled from content/site.md
 research.html       shell, filled from content/site.md
 about.html          shell, filled from content/site.md
@@ -19,11 +19,14 @@ content/
   site.md           ALL the content for work, research, and about
 assets/
   site.css          every style, all colours as CSS variables at the top
-  site.js           sticky nav and scroll reveal, loaded on every page
+  site.js           sticky nav, scroll reveal, and the motion toggle, loaded on every page
   content.js        markdown parser and renderers
   die.js            the 3D die and the flow rail, index.html only
   chirp.js          the strain trace, research.html only
   posit.js          the posit8 decoder, encoder, and accuracy plot
+  fonts/            Cormorant Garamond, Inter, JetBrains Mono, self-hosted (SIL OFL 1.1)
+  hermes.webp       the Hermes engraving at the top of the home page (see "Hero art")
+  hermes.jpg        the same, for browsers without WebP
 ```
 
 ## The posit lab
@@ -72,7 +75,8 @@ to a page, copy a `#` block and set `page:` to `work`, `research`, or `about`.
 Two conventions worth remembering:
 
 - `specs:` and `metrics:` take `label = value` pairs separated by `|`
-- a `*` at the end of a spec value turns it green, for results that passed
+- a `*` at the end of a spec value turns it white with a check mark, for
+  results that passed
 
 ## What still lives in HTML
 
@@ -118,18 +122,37 @@ step with the visible text when your role or links change.
 
 ## Changing the look
 
-Everything visual is a variable in the `:root` block at the top of
-`assets/site.css`. The site is near monochrome on black with a single accent,
-`--acid` (#76B900). Because it is the only colour on the page, it is reserved
-for things that mean something: brand marks, live state, and results that
-passed. Measured values are white, everything else is grey.
+The theme is Hermes, the messenger: fully monochrome, like an engraving of a
+statue in polished silver. Everything visual is a variable in the `:root` block
+at the top of `assets/site.css`. With no colour on the page, meaning is carried
+by brightness and marks: ordinary text is grey, measured values are near white,
+and results that passed are pure white with a check mark. The `--acid`
+variables keep their old names because `chirp.js` and `posit.js` read them; they
+are now a silver ladder. The metal stack in the 3D model is a brightness ladder
+too, defined in `assets/die.js`, and its legend colours sit in `index.html`.
 
-Changing `--acid` recolours the die, the flow rail, the chirp, the posit lab,
-the links, and the primary buttons together. The metal stack in the 3D model is
-a brightness ladder of that same hue, defined in `assets/die.js`.
+The ornaments are all CSS: thin rays turning slowly behind each page title and
+behind the die, a Roman numeral on every section eyebrow, the sign of Mercury
+as the mark and favicon, and a cornice rule above the footer.
 
-Fonts are Archivo for display, Inter for body, JetBrains Mono for anything that
-behaves like data. They load from Google Fonts in each page head.
+Fonts are Cormorant Garamond for display, Inter for body, JetBrains Mono for
+anything that behaves like data. They are self-hosted in `assets/fonts/`.
+
+## Hero art
+
+The home page opens on the Hermes engraving. It is a 4:1 panorama, so it runs
+as a full width band: on wide screens the outer rays are cropped as the band
+gets taller, and on phones it crops to the panel behind the figure. The motion
+is all CSS (`.hero-art` in `assets/site.css`): a slow drift, a glint of light
+that crosses the metal every twelve seconds, and a flare of the lightning
+behind the figure. Visitors who prefer reduced motion see the still image, and
+"Pause motion" under the hero stops it and remembers the choice on every page.
+
+To swap the art, export the new image about 2800 px wide (twice the original,
+upscaled if needed), greyscale, with its black set to `#050505` so it melts into
+the page, and save it over both `assets/hermes.webp` and `assets/hermes.jpg`.
+If the new image is not 4:1, update the `width` and `height` on its `<img>` in
+`index.html`.
 
 ## One tradeoff to know about
 
