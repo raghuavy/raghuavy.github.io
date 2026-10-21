@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Avyukt Raghuvanshi · RTL to silicon</title>
-<meta name="description" content="Avyukt Raghuvanshi. Electrical Engineering (Honors) and Physics at the University of Minnesota. Digital design, RTL to GDSII, tapeout, and machine learning for gravitational wave and neutrino data.">
+<meta name="description" content="Avyukt Raghuvanshi. Electrical Engineering (Honors) and Physics at the University of Minnesota. ASIC physical design and verification. Founder of SASi and the ASIC Network. RTL to GDSII, timing closure, and tapeout.">
 <meta name="theme-color" content="#050505">
 <link rel="canonical" href="https://raghuavy.github.io/">
 <meta property="og:type" content="profile">
 <meta property="og:site_name" content="Avyukt Raghuvanshi">
 <meta property="og:title" content="Avyukt Raghuvanshi · RTL to silicon">
-<meta property="og:description" content="Avyukt Raghuvanshi. Electrical Engineering (Honors) and Physics at the University of Minnesota. Digital design, RTL to GDSII, tapeout, and machine learning for gravitational wave and neutrino data.">
+<meta property="og:description" content="Avyukt Raghuvanshi. Electrical Engineering (Honors) and Physics at the University of Minnesota. ASIC physical design and verification. Founder of SASi and the ASIC Network. RTL to GDSII, timing closure, and tapeout.">
 <meta property="og:url" content="https://raghuavy.github.io/">
 <meta property="og:image" content="https://avatars.githubusercontent.com/u/161277871?s=800&amp;v=4">
 <meta property="og:image:alt" content="Portrait of Avyukt Raghuvanshi">
@@ -78,7 +78,7 @@
         "RTL to GDSII",
         "SystemVerilog",
         "Tapeout",
-        "Posit arithmetic",
+        "Design verification",
         "Gravitational waves",
         "Machine learning",
         "Neutrino physics"
@@ -167,22 +167,19 @@
   </div>
   <div class="wrap hero-inner">
     <p class="mono eyebrow">Minneapolis, MN · University of Minnesota</p>
-    <h1>I take RTL all the way to <em>silicon</em>.</h1>
+    <h1>Physical design.<br>Verification.<br><em>Silicon.</em></h1>
     <p class="lede">
-      I'm Avyukt (Avi) Raghuvanshi, an Electrical Engineering (Honors) and Physics
-      undergraduate at the University of Minnesota and the founder of Stone Arch Silicon,
-      the university's chip design club. I write SystemVerilog,
-      harden it through open source and commercial flows, and send it to a shuttle.
-      The other half of my week goes to machine learning on gravitational wave and
-      neutrino data with the LIGO, DUNE, and NOvA collaborations.
-    </p>
+          I'm Avyukt (Avi) Raghuvanshi. My focus is ASIC physical design and verification:
+          SystemVerilog, timing closure, and RTL to GDSII. I study EE (Honors) and Physics
+          at the University of Minnesota and founded Stone Arch Silicon (SASi) and the ASIC Network.
+        </p>
     <div class="hero-actions">
       <a class="btn is-primary" href="work.html">See the work</a>
       <a class="btn" href="research.html">Research</a>
       <a class="btn" href="contact.html">Get in touch</a>
     </div>
     <div class="hero-foot">
-      <a href="#silicon" style="text-decoration:none">The die below is real &darr;</a>
+      <a href="#silicon" style="text-decoration:none">Explore the silicon &darr;</a>
       <button class="motion-btn" id="motionBtn" type="button" aria-pressed="false">
         <i aria-hidden="true">
           <svg class="ic-pause" viewBox="0 0 8 8"><path d="M1.5 0v8M6.5 0v8" stroke="currentColor" stroke-width="1.6"/></svg>
@@ -198,11 +195,10 @@
   <div class="wrap">
     <div class="die-grid">
       <div class="section-head rise">
-        <p class="mono eyebrow is-silicon">Most recent silicon</p>
-        <h2>The die on the home page is real.</h2>
+        <p class="mono eyebrow is-silicon">Physical design &amp; verification</p>
+        <h2>From RTL to a clean layout.</h2>
         <p class="lede">
-          It is a 2×2 systolic array I designed and hardened end to end. Every number in the
-          strip below came off the run, not off a datasheet.
+          A SKY130 systolic array, hardened end to end. 50 MHz, clean DRC, and no setup or hold violations.
         </p>
         <div class="sheet">
           <div><b>On screen</b><i>2×2 systolic array</i></div>
@@ -214,7 +210,7 @@
 
       <div class="stage">
         <canvas id="die-canvas" aria-label="Interactive model of a hardened silicon die"></canvas>
-        <ul class="stack" id="stack">
+        <ul class="stack" id="stack" style="display:none" aria-hidden="true">
           <li style="--c:#5a5a58"><i></i>diff</li>
           <li style="--c:#6e6e6b"><i></i>poly</li>
           <li style="--c:#858582"><i></i>met1</li>
@@ -230,7 +226,7 @@
       </div>
     </div>
 
-    <div class="flow">
+    <div class="flow" style="display:none" aria-hidden="true">
       <div class="flow-track" id="flow" role="group" aria-label="RTL to GDSII flow"></div>
       <p class="flow-note" id="flow-note"></p>
     </div>
@@ -244,8 +240,8 @@
         <h3>2×2 systolic array matrix multiplier</h3>
         <p class="card-meta">SystemVerilog · OpenLane · Yosys · OpenROAD · Magic · KLayout</p>
         <ul>
-          <li>Output stationary array of four processing elements, each a MAC with a local accumulator, operands rippling one hop per cycle. Verified with a skewed input testbench.</li>
-          <li>Hardened through synthesis, floorplan, placement, clock tree, routing, then Magic and KLayout signoff.</li>
+          <li>Designed and verified a four-PE SystemVerilog systolic array.</li>
+          <li>Closed timing and completed physical verification through the full SKY130 flow.</li>
         </ul>
         <div class="specs">
           <div><b>Process</b><i>SKY130</i></div>
@@ -259,7 +255,7 @@
     </div>
 
     <div class="hero-actions rise" style="margin-top:26px">
-      <a class="btn" href="work.html">All six projects</a>
+      <a class="btn" href="work.html">Selected projects</a>
     </div>
   </div>
 </section>
@@ -268,13 +264,13 @@
   <div class="wrap">
     <div class="section-head rise">
       <p class="mono eyebrow">Three things I spend time on</p>
-      <h2>Chips, signals, and the people learning both.</h2>
+      <h2>Silicon, research, and leadership.</h2>
     </div>
 
     <div class="hub">
       <a class="hub-card c-silicon rise" href="work.html">
         <p class="hub-tag">Silicon</p>
-        <h3>Digital and physical design</h3>
+        <h3>Physical design &amp; verification</h3>
         <p class="hub-copy">
           RTL in SystemVerilog, hardened through OpenLane and through Synopsys and Cadence,
           plus the mixed signal boards that carry it.
@@ -282,7 +278,7 @@
         <div class="hub-stat">
           <span><i>1</i> die hardened</span>
           <span><i>2</i> tapeouts in flight</span>
-          <span><i>6</i> projects</span>
+          <span><i>PD</i> + verification</span>
         </div>
         <p class="hub-go">See the work</p>
       </a>
@@ -306,8 +302,7 @@
         <p class="hub-tag">People</p>
         <h3>Getting undergrads to the fab</h3>
         <p class="hub-copy">
-          Founded Stone Arch Silicon, and helped stand up a network of university
-          groups that now tape out together.
+          Founder of Stone Arch Silicon (SASi) and the ASIC Network. Leading a planned TSMC 180 nm tapeout with UCLA.
         </p>
         <div class="hub-stat">
           <span><i>$20k</i> secured</span>
@@ -320,22 +315,27 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="wrap">
-    <div class="section-head rise">
-      <p class="mono eyebrow">Live demo</p>
-      <h2>Play with an 8 bit posit.</h2>
-      <p class="lede">
-        I am building a posit8 codec in SystemVerilog this term. The same arithmetic is
-        written out in JavaScript on the work page, so you can flip individual bits and
-        watch the regime, exponent, and fraction fields redraw themselves around the change.
-      </p>
-    </div>
-    <div class="hero-actions rise">
-      <a class="btn is-primary" href="work.html#posit">Open the posit lab</a>
-    </div>
-  </div>
-</section>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head rise">
+          <p class="mono eyebrow">What's next</p>
+          <h2>Architecture to tapeout.</h2>
+        </div>
+        <div class="cards">
+          <article class="card rise">
+            <div class="card-top"><span class="card-tag">Princeton · early discussions</span><span class="card-date">2026</span></div>
+            <h3>HALO / SCALO</h3>
+            <p>In discussions with Prof. Abhishek Bhattacharjee and Raghav about upcoming chip tapeouts, building on the HALO (ISCA ’20) and SCALO (ISCA ’23) systems.</p>
+          </article>
+          <article class="card rise">
+            <div class="card-top"><span class="card-tag">SASi × ASIC Network</span><span class="card-date">Planned</span></div>
+            <h3>TSMC 180 nm</h3>
+            <p>Leading our upcoming tapeout effort with UCLA, with a focus on implementation, verification, and IP integration.</p>
+          </article>
+        </div>
+        <p class="mono rise" style="margin-top:28px">Interview offers · Texas Instruments · Forward Edge ASIC</p>
+      </div>
+    </section>
 
 </main>
 
@@ -358,7 +358,7 @@
     </div>
     <div class="foot-note">
       <span>Avyukt Raghuvanshi · B.S. EE (Honors) and Physics, expected May 2028</span>
-      <span>No framework, no build step, three.js is the only dependency.</span>
+      <span>Physical design · Verification · ASICs</span>
     </div>
   </div>
 </footer>
