@@ -380,6 +380,9 @@
   function tick(now) {
     raf = 0;
     if (!running) return;
+    // on 120, 144 and 240 Hz screens only every second or third frame is drawn:
+    // a slow film loop gains nothing from more, and the battery is spared
+    if (last && now - last < 9.5) { raf = requestAnimationFrame(tick); return; }
     var dt = last ? Math.min((now - last) / 1000, 0.1) : 0;
     last = now;
     clock += dt;
