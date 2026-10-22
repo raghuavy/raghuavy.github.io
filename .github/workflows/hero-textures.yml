@@ -1,0 +1,34 @@
+name: Build hero textures
+
+# One-off: rebuilds assets/hermes-hd.webp and assets/hermes-fx.png from
+# assets/hermes.webp with tools/hero_fx.py, then commits them. Only runs when
+# started by hand from the Actions tab.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install
+        run: pip install numpy pillow opencv-python-headless scipy scikit-image scikit-learn onnx onnxruntime
+      - name: Fetch the Real-ESRGAN weights
+        run: curl -fsSL -o /tmp/RealESRGAN_x4plus.pth https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth
+      - name: Build
+        run: |
+          python3 tools/hero_fx.py upscale /tmp/RealESRGAN_x4plus.pth
+          python3 tools/hero_fx.py fx
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/hermes-hd.webp assets/hermes-fx.png
+          git commit -m "Build the hero textures" || echo "nothing to commit"
+          git push
