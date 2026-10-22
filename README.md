@@ -10,7 +10,7 @@ needs touching.
 ## Structure
 
 ```
-index.html          home: the Hermes engraving, then the interactive silicon die and the RTL to GDSII rail
+index.html          home: the live Hermes hero, then the interactive silicon die and the RTL to GDSII rail
 work.html           shell, filled from content/site.md
 research.html       shell, filled from content/site.md
 about.html          shell, filled from content/site.md
@@ -24,9 +24,16 @@ assets/
   die.js            the 3D die and the flow rail, index.html only
   chirp.js          the strain trace, research.html only
   posit.js          the posit8 decoder, encoder, and accuracy plot
+  hero.js           the live hero, the engraving drawn in WebGL2, index.html only (see "Hero art")
   fonts/            Cormorant Garamond, Inter, JetBrains Mono, self-hosted (SIL OFL 1.1)
-  hermes.webp       the Hermes engraving at the top of the home page (see "Hero art")
+  hermes.webp       the Hermes engraving, the still under the live hero and its fallback
   hermes.jpg        the same, for browsers without WebP
+  hermes-hd.webp    the engraving upscaled to 5600 px wide, the texture hero.js draws
+  hermes-fx.png     depth, figure, lightning, and cable ids for the hero's effects
+tools/
+  hero_fx.py        rebuilds hermes-hd.webp and hermes-fx.png (not loaded by the site)
+.github/workflows/
+  hero-textures.yml runs hero_fx.py in the cloud and commits the result, by hand only
 ```
 
 ## The posit lab
@@ -140,19 +147,44 @@ anything that behaves like data. They are self-hosted in `assets/fonts/`.
 
 ## Hero art
 
-The home page opens on the Hermes engraving. It is a 4:1 panorama, so it runs
-as a full width band: on wide screens the outer rays are cropped as the band
-gets taller, and on phones it crops to the panel behind the figure. The motion
-is all CSS (`.hero-art` in `assets/site.css`): a slow drift, a glint of light
-that crosses the metal every twelve seconds, and a flare of the lightning
-behind the figure. Visitors who prefer reduced motion see the still image, and
-"Pause motion" under the hero stops it and remembers the choice on every page.
+The home page opens on a full screen stage, like a film behind glass: the
+Hermes engraving is fixed to the screen and the page scrolls up over it.
+`assets/hero.js` draws it live in WebGL2, every frame:
 
-To swap the art, export the new image about 2800 px wide (twice the original,
-upscaled if needed), greyscale, with its black set to `#050505` so it melts into
-the page, and save it over both `assets/hermes.webp` and `assets/hermes.jpg`.
-If the new image is not 4:1, update the `width` and `height` on its `<img>` in
-`index.html`.
+- the camera drifts slowly with real depth, the figure in front of the panel
+  and the cables falling away behind him, and the cursor tilts it a little
+- signals race out along the cables and rods he holds, each on its own clock
+- lightning crawls through the panel, and every 7 to 14 seconds a strike sends
+  one pulse down every cable at once
+- a light moves over the silver, with dust in the air and film grain on top
+
+On wide screens the camera pulls back so both fans of cables are in shot. On
+phones it frames the face, and the art fades into the dark where the text
+starts.
+
+The live view loads two images after the page, about 800 KB together, and stops
+drawing whenever the hero is off screen or the tab is hidden. "Pause motion"
+freezes it on the current frame and is remembered on every page. Visitors who
+prefer reduced motion get one still frame. Without WebGL2, or with Save-Data on,
+the page keeps the still `hermes.webp` with the older CSS motion.
+
+To inspect single frames, add `#hero-debug` to the URL. The clock stops, and
+`heroDebug.at(seconds)` in the console draws that moment.
+
+The framing lives in `LAYOUT` at the top of `hero.js`, and the still in
+`.hero-art img` in `assets/site.css` mirrors it, so change both together.
+Speeds and brightness are in the shader in the same file.
+
+To swap the art, export the new image about 2800 px wide, greyscale, with its
+black set to `#050505` so it melts into the page, and save it over both
+`assets/hermes.webp` and `assets/hermes.jpg`. Then rebuild the two textures with
+`tools/hero_fx.py` (how to run it is at the top of the file), or start "Build
+hero textures" from the Actions tab, which runs it in the cloud and commits the
+result. The effect map is measured from this engraving in particular, where
+the cables converge, the panel edges, and the figure, so new art means redoing
+those measurements and the matching constants at the top of `hero.js`. Until
+then, delete the `<canvas>` line in `index.html` and the hero falls back to the
+still.
 
 ## One tradeoff to know about
 
