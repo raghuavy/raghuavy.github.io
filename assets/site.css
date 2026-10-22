@@ -168,19 +168,36 @@ main{counter-reset:sec}
 /* a cornice rule: dentils between two hairlines */
 .cornice{height:14px;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);background:repeating-linear-gradient(90deg,var(--line-2) 0 7px,transparent 7px 13px) 0 3px/100% 6px no-repeat}
 
-/* ---------- home hero: the Hermes engraving as a masthead, title beneath it ----------
-   The art is a 4:1 panorama, so it runs full width as a band; when the band is taller
-   than a quarter of the screen width, the outer rays are cropped. Its blacks are levelled
-   to --bg, so the fades only have to soften the crop. Now and then a glint of light
-   crosses the metal and the lightning behind the figure flares. */
-.hero{--art-h:clamp(250px,60vh,680px);position:relative;isolation:isolate;padding:64px 0 clamp(40px,7vh,72px)}
-.hero-art{position:relative;z-index:-1;height:var(--art-h);overflow:hidden;background:var(--bg)}
-.hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;transform-origin:50% 30%;animation:hermes-drift 30s ease-in-out infinite alternate}
+/* ---------- home hero: a full screen stage ----------
+   The engraving is fixed to the viewport and clipped to the hero (clip-path), so the
+   page scrolls up over it like a film behind glass. hero.js renders it live in WebGL
+   and adds .is-live once the first frame is up; until then, and wherever WebGL is
+   missing, the still underneath plays the older CSS motion: a slow drift, a glint of
+   light across the metal, and a flare of the lightning. The text sits at the bottom on
+   a shade that travels with it, so it reads over any frame. */
+.hero{position:relative;isolation:isolate;clip-path:inset(0);min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(64px + 6vh) 0 clamp(26px,4.5vh,48px)}
+/* the section after the hero is opaque, so it covers the art even if a browser drops the
+   clip for a moment (iOS can, after a rotation; hero.js nudges it back) */
+.hero + .section{background:var(--bg)}
+.hero-art{position:fixed;left:0;top:0;width:100%;height:100vh;height:100lvh;z-index:-1;overflow:hidden;background:var(--bg)}
+/* The art runs as a band across the top of the screen, face near the middle, and sinks
+   into the dark under the text. On wide screens it is 80% of the height with the face a
+   little right of centre, so both fans of cables show; on tall screens 64%. hero.js
+   (LAYOUT) frames the live view the same way and pins these numbers exactly. */
+.hero-art img{position:absolute;left:calc(50% - 125.5vh);top:8vh;width:auto;height:64%;max-width:none;
+  transform-origin:50% 30%;animation:hermes-drift 30s ease-in-out infinite alternate;
+  -webkit-mask-image:linear-gradient(180deg,#000 58%,transparent);mask-image:linear-gradient(180deg,#000 58%,transparent)}
+@media(min-aspect-ratio:23/20){
+  .hero-art img{left:calc(54% - 157vh);top:-.5vh;height:80%}
+}
+.hero-gl{position:absolute;inset:0;z-index:2;width:100%;height:100%;display:block;opacity:0;transition:opacity 1.6s var(--ease)}
+.hero-art.is-live .hero-gl{opacity:1}
+.hero-art.is-shown img,.hero-art.is-shown .hero-glint,.hero-art.is-shown .hero-flash{visibility:hidden;animation:none}
 .hero-art::after{
   content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
   background:
-    linear-gradient(180deg,var(--bg) 0%,rgba(5,5,5,0) 10%,rgba(5,5,5,0) 56%,rgba(5,5,5,.8) 86%,var(--bg) 100%),
-    linear-gradient(90deg,var(--bg) 0%,rgba(5,5,5,0) 14%,rgba(5,5,5,0) 86%,var(--bg) 100%);
+    linear-gradient(180deg,rgba(5,5,5,.8) 0%,rgba(5,5,5,0) 17%),
+    linear-gradient(0deg,rgba(5,5,5,.85) 0%,rgba(5,5,5,.35) 24%,rgba(5,5,5,0) 46%);
 }
 /* both light layers colour-dodge: the engraved lines brighten, the black stays black */
 .hero-glint,.hero-flash{position:absolute;pointer-events:none;mix-blend-mode:color-dodge}
@@ -194,7 +211,14 @@ main{counter-reset:sec}
 @keyframes hermes-glint{0%{transform:translateX(0)}40%,100%{transform:translateX(350%)}}
 @keyframes hermes-flash{0%,62%,100%{opacity:0}63%{opacity:.9}64.2%{opacity:.25}66%{opacity:.75}72%{opacity:0}}
 .motion-off .hero-art img,.motion-off .hero-glint,.motion-off .hero-flash{animation:none}
-.hero-inner{position:relative;margin-top:calc(var(--art-h) * -.16)}
+.hero-inner{position:relative}
+/* the shade behind the text: dark on the left where the words are, clear toward the figure */
+.hero-inner::before{
+  content:"";position:absolute;z-index:-1;pointer-events:none;
+  top:-18vh;bottom:calc(-1 * clamp(26px,4.5vh,48px));left:calc(50% - 50vw);right:calc(50% - 50vw);
+  background:linear-gradient(90deg,rgba(5,5,5,.88) 0%,rgba(5,5,5,.8) 36%,rgba(5,5,5,.45) 60%,rgba(5,5,5,0) 85%);
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 18vh);mask-image:linear-gradient(180deg,transparent 0,#000 18vh);
+}
 .hero h1{font-size:clamp(3rem,6.6vw,6rem);line-height:.98;margin-bottom:26px}
 .hero .lede{color:#c9c8c4;max-width:58ch}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
@@ -488,10 +512,13 @@ code{font-family:var(--mono);font-size:.86em;color:#fff;background:rgba(255,255,
 .rise.in{opacity:1;transform:none}
 
 /* ---------- responsive ---------- */
-/* portrait screens: a shorter band, cropped to the panel behind the figure */
+/* portrait screens: the figure fills the top of the screen and the text starts below
+   him, then scrolls up over the art on a full width shade */
 @media(max-aspect-ratio:1/1){
-  .hero{--art-h:clamp(240px,66vw,520px)}
+  .hero{padding-top:58vh;padding-top:58svh}
   .hero h1{font-size:clamp(2.6rem,9vw,5rem)}
+  .hero-inner::before{top:-22vh;background:linear-gradient(180deg,rgba(5,5,5,.5),rgba(5,5,5,.86) 34%,rgba(5,5,5,.92));
+    -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 22vh);mask-image:linear-gradient(180deg,transparent 0,#000 22vh)}
 }
 @media(max-width:980px){
   .die-grid{grid-template-columns:1fr;gap:30px}
