@@ -137,22 +137,18 @@
 <link rel="stylesheet" href="assets/site.css">
 
 <style>
-/* Company offers: compact, responsive marks in the monochrome hero. */
+/* Logo strips: compact, responsive marks in the monochrome hero. */
 .offer-strip{margin-top:28px;padding:18px 0 20px;border-block:1px solid var(--line-2);max-width:900px}
 .offer-label{font:400 .58rem var(--mono);letter-spacing:.17em;text-transform:uppercase;color:var(--dim);margin-bottom:18px}
 .offer-logos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;padding:0;margin:0}
 .offer-logos li{min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
 .offer-logos img{display:block;width:100%;max-width:170px;height:44px;object-fit:contain;object-position:left center;filter:brightness(0) invert(1)}
-.offer-logos .offer-ti{filter:url(#logo-ink);object-fit:cover}
-.offer-logos .offer-forwardedge{filter:grayscale(1) invert(1) brightness(1.3)}
-.offer-logos .offer-nvidia{object-fit:cover;object-position:center}
-.offer-logos .offer-micron{max-width:132px;filter:none}
 .offer-logos span{font:400 .65rem/1.5 var(--mono);color:var(--sub)}
-.connection-strip{margin-top:0;border-top:0}.connection-strip .offer-logos img{max-width:170px;filter:none}
+.connection-strip .offer-logos img{max-width:170px;filter:none}
 .connection-strip .offer-logos .connection-semianalysis{filter:brightness(0) invert(1)}
 .hero-founder{margin-top:16px;font:400 .7rem/1.6 var(--mono);color:var(--sub)}
 .hero-founder b{font-weight:400;color:var(--dim);text-transform:uppercase;font-size:.58rem;letter-spacing:.17em;margin-right:12px}
-@media(max-width:600px){.offer-logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}.offer-logos img{max-width:155px;height:38px}.offer-logos .offer-micron{max-width:120px}}
+@media(max-width:600px){.offer-logos{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 20px}.offer-logos img{max-width:155px;height:38px}}
 
 /* Organizations behind the work. */
 .founded{max-width:900px;margin-top:20px}
@@ -220,15 +216,6 @@
     <p class="mono eyebrow">ASIC designer · Founder · Published researcher</p>
     <h1>Avyukt Raghuvanshi.<br><em>Built for what's next.</em></h1>
     <p class="lede">I'm Avi. Physical design and verification are my niche. I founded Stone Arch Silicon (SASi) and the ASIC Network, connecting university teams around ambitious chip design and tapeouts. EE (Honors) + Physics at the University of Minnesota.</p>
-    <div class="offer-strip rise" aria-label="Company offers">
-      <p class="offer-label">Offers</p>
-      <ul class="offer-logos">
-        <li><img class="offer-ti" src="https://www.ti.com/content/dam/ticom/images/identities/ti-brand/ti-stacked-black-logo.png" alt="Texas Instruments" width="170" height="44" decoding="async"><span>IC Design</span></li>
-        <li><img class="offer-forwardedge" src="https://forwardedgeasic.com/wp-content/themes/forwardedge/images/forwardedge-logo.svg" alt="ForwardEdge ASIC" width="170" height="44" decoding="async"><span>Physical Design</span></li>
-        <li><img class="offer-nvidia" src="https://www.nvidia.com/content/nvidiaGDC/us/en_US/about-nvidia/legal-info/logo-brand-usage/_jcr_content/root/responsivegrid/nv_container_392921705/nv_container_412055486/nv_image.coreimg.svg/1776076920317/nvidia-logo-horz.svg" alt="NVIDIA" width="170" height="44" decoding="async"><span>Physical Design</span></li>
-        <li><img class="offer-micron" src="https://assets.micron.com/adobe/assets/urn:aaid:aem:652506f6-3869-4e9b-a1bd-d5b4209f850c/as/Micron-logo-white.svg" alt="Micron" width="132" height="44" decoding="async"><span>Digital ASIC Design</span></li>
-      </ul>
-    </div>
     <div class="offer-strip connection-strip rise" aria-label="Research and industry connections">
       <p class="offer-label">Research &amp; industry</p>
       <ul class="offer-logos">
